@@ -268,13 +268,13 @@ public class VPNProfileList extends ListFragment implements OnClickListener, Vpn
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.fab_import:
-                startImportConfigFilePicker();
-                break;
-            case R.id.fab_add:
-                onAddOrDuplicateProfile(null);
-                break;
+        int i = v.getId();
+        if (i == R.id.fab_import) {
+            startImportConfigFilePicker();
+
+        } else if (i == R.id.fab_add) {
+            onAddOrDuplicateProfile(null);
+
         }
     }
 
