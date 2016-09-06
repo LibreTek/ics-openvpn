@@ -143,6 +143,9 @@ public class OpenVPNService extends VpnService implements StateListener, Callbac
     }
 
     private void showNotification(final String msg, String tickerText, boolean lowpriority, long when, ConnectionStatus status) {
+        if (true) {
+            return; // Library can hide notifications as we handle status changes via event handlers
+        }
         String ns = Context.NOTIFICATION_SERVICE;
         NotificationManager mNotificationManager = (NotificationManager) getSystemService(ns);
 
@@ -184,7 +187,7 @@ public class OpenVPNService extends VpnService implements StateListener, Callbac
         mNotificationManager.notify(OPENVPN_STATUS, notification);
         startForeground(OPENVPN_STATUS, notification);
 
-        // Check if running on a TV
+        /*// Check if running on a TV
         if (runningOnAndroidTV() && !lowpriority)
             guiHandler.post(new Runnable() {
 
@@ -197,7 +200,7 @@ public class OpenVPNService extends VpnService implements StateListener, Callbac
                     mlastToast = Toast.makeText(getBaseContext(), toastText, Toast.LENGTH_SHORT);
                     mlastToast.show();
                 }
-            });
+            });*/
     }
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
